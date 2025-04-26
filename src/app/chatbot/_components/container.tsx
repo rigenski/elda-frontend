@@ -53,7 +53,7 @@ export default function Container() {
       text: form.watch("message"),
     };
 
-    handleGetMessages(body.text, "user");
+    handleGetMessages(form.watch("message"), "user");
 
     api
       .post("/api/process-speech", body)
