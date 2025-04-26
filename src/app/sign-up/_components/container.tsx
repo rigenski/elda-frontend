@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 export default function Container() {
   const router = useRouter();
@@ -15,25 +14,6 @@ export default function Container() {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    if (
-      form.watch("name") === "" ||
-      form.watch("email") === "" ||
-      form.watch("password") === ""
-    ) {
-      toast.error("Please fill in all fields");
-      return;
-    }
-
-    const user = {
-      name: form.watch("name"),
-      email: form.watch("email"),
-      password: form.watch("password"),
-    };
-
-    if (typeof window !== "undefined") {
-      localStorage.setItem("user-register", JSON.stringify(user));
-    }
-
     router.push("/onboard");
   };
 

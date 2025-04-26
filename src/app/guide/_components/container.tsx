@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
 import api from "@/service/api";
-import { useConfig } from "@/store/config";
 import { format } from "date-fns";
 import { EllipsisIcon, PlusIcon, TimerIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -26,7 +27,7 @@ interface ISchedule {
 }
 
 export default function Container() {
-  const { config } = useConfig()();
+  const config: any = null;
 
   const [isLoadingSchedules, setIsLoadingSchedules] = useState<boolean>(false);
   const [reminders, setReminders] = useState<IReminder[]>([]);

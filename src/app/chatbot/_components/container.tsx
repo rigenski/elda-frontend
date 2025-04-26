@@ -1,15 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
 import api from "@/service/api";
-import { useConfig } from "@/store/config";
 import { ArrowLeftIcon, SendIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { useSpeechRecognition } from "react-speech-kit";
+import { toast } from "sonner";
 
 interface IMessage {
   id: number;
@@ -18,9 +18,8 @@ interface IMessage {
 }
 
 export default function Container() {
+  const config: any = null;
   const form = useForm();
-
-  const { config } = useConfig()();
 
   const listRef = useRef<HTMLDivElement>(null);
 

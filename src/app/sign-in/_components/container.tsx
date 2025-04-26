@@ -1,54 +1,20 @@
 "use client";
 
-import api from "@/service/api";
-import { useConfig } from "@/store/config";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 export default function Container() {
   const router = useRouter();
   const form = useForm();
 
-  const { setConfig } = useConfig()();
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    if (!form.watch("email")?.length || !form.watch("password")?.length) {
-      toast.error("Please fill in all fields");
-      return;
-    }
-
-    setIsLoading(true);
-
-    api
-      .post("/auth/login", {
-        email: form.watch("email"),
-        password: form.watch("password"),
-      })
-      .then((res) => {
-        setConfig(res.data.user);
-
-        if (typeof window !== "undefined") {
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-        }
-
-        toast.success("Login successful");
-
-        router.push("/");
-      })
-      .catch(() => {
-        toast.error("Invalid email or password");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    router.push("/");
   };
 
   return (
@@ -112,7 +78,6 @@ export default function Container() {
               <div className="mt-4">
                 <button
                   className="w-full rounded-full bg-[#0D6BDC] px-8 py-4"
-                  disabled={isLoading}
                   onClick={handleSubmit}
                 >
                   <p className="text-base font-semibold text-white">Login</p>

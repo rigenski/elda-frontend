@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
-import { useConfig } from "@/store/config";
 import {
   DoorOpenIcon,
   MapPinIcon,
@@ -14,7 +15,7 @@ import { toast } from "sonner";
 export default function Container() {
   const router = useRouter();
 
-  const { config } = useConfig()();
+  const config: any = null;
 
   const handleShareMyLocation = () => {
     const googleMapsUrl = `https://www.google.com/maps?q=${config?.latitude},${config?.longitude}`;

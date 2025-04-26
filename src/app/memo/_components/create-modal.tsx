@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
 import api from "@/service/api";
-import { useConfig } from "@/store/config";
 import { cn } from "@/utils/classnames";
 import { XIcon } from "lucide-react";
 import { motion } from "motion/react";
@@ -17,7 +17,7 @@ interface CreateModalProps {
 export default function CreateModal({ isOpen, onClose }: CreateModalProps) {
   const form = useForm();
 
-  const { config } = useConfig()();
+  const config: any = null;
 
   const handleCreateMemo = () => {
     if (!form.watch("text")) {
