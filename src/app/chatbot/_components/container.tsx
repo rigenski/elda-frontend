@@ -3,7 +3,7 @@
 "use client";
 
 import api from "@/service/api";
-import { ArrowLeftIcon, SendIcon, XIcon } from "lucide-react";
+import { ArrowLeftIcon, CheckIcon, SendIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -207,7 +207,7 @@ export default function Container() {
             >
               {listening ? (
                 <div className="flex h-10 min-h-10 w-10 min-w-10 items-center justify-center rounded-full bg-[#0D6BDC]">
-                  <XIcon className="h-5 min-h-5 w-5 min-w-5 text-white" />
+                  <CheckIcon className="h-5 min-h-5 w-5 min-w-5 text-white" />
                 </div>
               ) : !form.watch("message")?.length ? (
                 <Image
