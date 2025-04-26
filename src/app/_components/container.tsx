@@ -84,11 +84,6 @@ export default function Container() {
             <p className="text-2xl font-semibold text-black">{currentDate}</p>
           </div>
           <div className="mb-8 grid grid-cols-2 items-center gap-2">
-            <Link href="/memo">
-              <button className="w-full rounded-full border border-[#02BA62] px-4 py-2.5">
-                <p className="text-sm font-semibold text-[#02BA62]">Add Memo</p>
-              </button>
-            </Link>
             <a
               href="tel:+1234567890"
               className="w-full rounded-full border border-[#FF4242] px-4 py-2.5"

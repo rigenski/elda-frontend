@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
@@ -8,6 +9,7 @@ import { format } from "date-fns";
 import { PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import CreateModal from "./create-modal";
+
 interface IMemo {
   id: string;
   text: string;
@@ -44,12 +46,12 @@ export default function Container() {
         <div className="h-[72px] px-4">
           <div className="flex items-center justify-between">
             <p className="text-3xl font-semibold text-black">Memo</p>
-            <button
+            {/* <button
               className="rounded-full bg-black p-2"
               onClick={() => setIsOpenCreateModal(true)}
             >
               <PlusIcon className="h-6 w-6 text-white" />
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="h-[calc(100vh-120px)] w-full">

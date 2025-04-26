@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
@@ -60,12 +61,12 @@ export default function Container() {
           <div className="flex items-center justify-between">
             <p className="text-3xl font-semibold text-black">Guide</p>
 
-            <button
+            {/* <button
               className="rounded-full bg-black p-2"
               onClick={() => setIsOpenCreateModal(true)}
             >
               <PlusIcon className="h-6 w-6 text-white" />
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="h-[calc(100vh-120px)] w-full rounded-t-3xl bg-white">

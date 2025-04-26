@@ -19,7 +19,7 @@ export default function Loading({ children }: LoadingProps) {
         if (prev === 100) {
           return 0;
         }
-        return prev + 4;
+        return prev + 10;
       });
     }, 100);
     return () => clearInterval(interval);

@@ -25,12 +25,6 @@ export default function Container() {
   };
 
   const handleLogout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("user");
-    }
-
-    toast.success("Logged out successfully");
-
     router.push("/sign-in");
   };
 
@@ -47,7 +41,7 @@ export default function Container() {
             <div className="mb-4">
               <div className="h-32 w-32 rounded-full border-2 border-[#0D6BDC] bg-white">
                 <Image
-                  src={"/assets/profile/pfp.jpeg"}
+                  src={"/assets/profile/pp.jpeg"}
                   alt=""
                   width={480}
                   height={480}
