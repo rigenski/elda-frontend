@@ -3,7 +3,7 @@
 "use client";
 
 import api from "@/service/api";
-import { ArrowLeftIcon, CheckIcon, SendIcon, XIcon } from "lucide-react";
+import { ArrowLeftIcon, CheckIcon, SendIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
