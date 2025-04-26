@@ -33,10 +33,14 @@ export default function Container() {
     },
   });
 
-  const handleGetMessages = () => {
-    api.get(`/chatbot/history/${config?.id}`).then((res) => {
-      setMessages(res.data?.history);
-    });
+  const handleGetMessages = (message: string, sender: "user" | "elda") => {
+    let temp = [...messages]
+    temp.push({
+      id: messages.length ? messages.length + 1 : 1,
+      message: message,
+      sender: sender
+    })
+    setMessages(temp)
   };
 
   const handleSubmit = () => {
@@ -46,19 +50,18 @@ export default function Container() {
     }
 
     setIsLoading(true);
-
+    let msgInput = form.watch("message");
     const body = {
-      userid: config?.id,
-      message: form.watch("message"),
+      test: msgInput
     };
-
+    handleGetMessages(msgInput, "user")
     api
-      .post("/chatbot/chat", body)
-      .then(() => {
-        handleGetMessages();
-        setIsLoading(false);
-
-        form.setValue("message", "");
+      .post("/api/process-speech", body)
+      .then((res) => {
+        console.log(res)
+        // handleGetMessages();
+        // setIsLoading(false);
+        // form.setValue("message", "");
       })
       .catch(() => {
         toast.error("Sorry, something went wrong");
@@ -67,7 +70,7 @@ export default function Container() {
   };
 
   useEffect(() => {
-    handleGetMessages();
+    setMessages([]);
   }, []);
 
   useEffect(() => {
