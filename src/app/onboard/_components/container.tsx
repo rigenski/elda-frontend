@@ -1,15 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 
-import api from "@/service/api";
 import { SendIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSpeechRecognition } from "react-speech-kit";
 import { toast } from "sonner";
 import { IQuestion, ONBOARD_QUESTIONS } from "../_consts";
-import { useSpeechRecognition } from "react-speech-kit";
 
 interface IMessage {
   id: number;
@@ -43,51 +43,7 @@ export default function Container() {
   });
 
   const handleRegister = () => {
-    const userRegister = JSON.parse(
-      typeof window !== "undefined"
-        ? (localStorage.getItem("user-register") ?? "{}")
-        : "{}",
-    );
-
-    const age = messages.find((item) => item.field === "age");
-    const gender = messages.find((item) => item.field === "gender");
-    const medication = messages.find((item) => item.field === "medication");
-    const emergency = messages.find((item) => item.field === "emergency");
-    const habits = messages.find((item) => item.field === "habits");
-    const important_notes = messages.find(
-      (item) => item.field === "important_notes",
-    );
-
-    const body = {
-      name: userRegister?.name,
-      email: userRegister?.email,
-      password: userRegister?.password,
-      age: age?.message,
-      gender: gender?.message,
-      medication: medication?.message,
-      emergency: emergency?.message,
-      habits: habits?.message,
-      important_notes: important_notes?.message,
-      latitude: location?.lat,
-      longitude: location?.lon,
-    };
-
-    if (userRegister) {
-      api
-        .post("/auth/register", body)
-        .then(() => {
-          if (typeof window !== "undefined") {
-            localStorage.removeItem("user-register");
-          }
-
-          toast.success("Register successfully");
-
-          router.push("/sign-in");
-        })
-        .catch(() => {
-          toast.error("Sorry, something went wrong");
-        });
-    }
+    router.push("/");
   };
 
   const handleSubmit = () => {

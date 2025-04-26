@@ -14,7 +14,7 @@ export default function Container() {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    router.push("/onboard");
+    router.push("/chatbot");
   };
 
   return (

@@ -18,7 +18,6 @@ interface IMessage {
 }
 
 export default function Container() {
-  const config: any = null;
   const form = useForm();
 
   const listRef = useRef<HTMLDivElement>(null);
@@ -34,13 +33,13 @@ export default function Container() {
   });
 
   const handleGetMessages = (message: string, sender: "user" | "elda") => {
-    let temp = [...messages]
+    const temp = [...messages];
     temp.push({
       id: messages.length ? messages.length + 1 : 1,
       message: message,
-      sender: sender
-    })
-    setMessages(temp)
+      sender: sender,
+    });
+    setMessages(temp);
   };
 
   const handleSubmit = () => {
@@ -50,18 +49,18 @@ export default function Container() {
     }
 
     setIsLoading(true);
-    let msgInput = form.watch("message");
     const body = {
-      test: msgInput
+      text: form.watch("message"),
     };
-    handleGetMessages(msgInput, "user")
+
+    handleGetMessages(body.text, "user");
+
     api
       .post("/api/process-speech", body)
       .then((res) => {
-        console.log(res)
-        // handleGetMessages();
-        // setIsLoading(false);
-        // form.setValue("message", "");
+        setIsLoading(false);
+        form.setValue("message", "");
+        handleGetMessages(res?.data?.message, "elda");
       })
       .catch(() => {
         toast.error("Sorry, something went wrong");
