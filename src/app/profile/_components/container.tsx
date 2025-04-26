@@ -18,7 +18,7 @@ export default function Container() {
   const config: any = null;
 
   const handleShareMyLocation = () => {
-    const googleMapsUrl = `https://www.google.com/maps?q=${config?.latitude},${config?.longitude}`;
+    const googleMapsUrl = `https://www.google.com/maps?q=-6.2242403,106.6491967`;
 
     navigator.clipboard.writeText(googleMapsUrl);
     toast.success("Location copied to clipboard");
