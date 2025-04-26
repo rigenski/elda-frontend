@@ -33,13 +33,23 @@ export default function Container() {
   });
 
   const handleGetMessages = (message: string, sender: "user" | "elda") => {
-    const temp = [...messages];
-    temp.push({
-      id: messages.length ? messages.length + 1 : 1,
-      message: message,
-      sender: sender,
-    });
-    setMessages(temp);
+    setMessages([
+      ...messages,
+      {
+        id: messages.length ? messages.length + 1 : 1,
+        message: form.watch("message"),
+        sender: "user",
+      },
+      {
+        id: messages.length ? messages.length + 1 : 1,
+        message: message,
+        sender: sender,
+      },
+    ]);
+
+    if (sender === "elda") {
+      form.setValue("message", "");
+    }
   };
 
   const handleSubmit = () => {
@@ -53,13 +63,10 @@ export default function Container() {
       text: form.watch("message"),
     };
 
-    handleGetMessages(form.watch("message"), "user");
-
     api
       .post("/api/process-speech", body)
       .then((res) => {
         setIsLoading(false);
-        form.setValue("message", "");
         handleGetMessages(res?.data?.message, "elda");
       })
       .catch(() => {
